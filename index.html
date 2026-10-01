@@ -104,7 +104,7 @@ details{background:var(--surf);border:1px solid var(--line);border-radius:16px;p
 summary{font-weight:600;cursor:pointer}details p{color:var(--mut);margin-top:8px;font-size:15px}
 footer{background:var(--deep);color:#cfe1fb;padding:36px 0;text-align:center;font-size:14px;margin-top:68px}
 footer .fr{font-size:24px;color:#fff}
-.rv{opacity:0;transform:translateY(22px);transition:.6s}.rv.in{opacity:1;transform:none}
+.js .rv{opacity:0;transform:translateY(22px);transition:.6s}.js .rv.in{opacity:1;transform:none}
 @media(max-width:900px){nav ul{display:none}nav .ib{margin-left:auto}.hg,.two{grid-template-columns:1fr}.pg,.mg{grid-template-columns:1fr}.grid{grid-template-columns:1fr 1fr}.feat{grid-template-columns:1fr 1fr}}
 @media(max-width:520px){.grid{grid-template-columns:1fr}}
 </style>
@@ -225,4 +225,20 @@ M.forEach(function(m){var e=document.createElement('div');e.className='mc rv '+m
 P.forEach(function(x){$('sv').add(new Option(x[0]+' – '+f(x[1])+'/kg'))});
 B.forEach(function(x){var a=document.createElement('a');a.target='_blank';a.rel='noopener';
  a.href='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent('Cika Laundry '+x[0]+' '+x[1]);
- a.className='rv';a.innerHTML='<i>📍</i><span><b>Cika La
+ a.className='rv';a.innerHTML='<i>📍</i><span><b>Cika Laundry '+x[0]+'</b><small>'+x[1]+'</small></span>';$('br').appendChild(a);$('cb').add(new Option('Cika Laundry '+x[0]))});
+var S='';
+function calc(){var k=parseFloat($('kg').value)||0,i=$('sv').selectedIndex,h=P[i][1],pm=$('pm').checked&&(i===0||i===3);
+ $('wn').textContent=k<3?'Yuk, minimal order 3 kg ya Kak 😊':'';if(k<3)k=3;
+ var fr=pm?Math.floor(k/6):0,pay=k-fr;
+ S=P[i][0]+' '+k+' kg'+(fr?' (gratis '+fr+' kg)':'')+' = '+f(pay*h);
+ $('res').innerHTML='Dibayar <b>'+pay+' kg</b>'+(fr?' · Gratis <b>'+fr+' kg</b>':'')+'<br>Estimasi total: <b>'+f(pay*h)+'</b>'}
+$('kg').oninput=$('sv').onchange=$('pm').onchange=calc;calc();
+$('wa').onclick=function(){var m='Halo Cika Laundry, saya ingin memesan.\nNama: '+($('nm').value||'-')+'\nCabang: '+$('cb').value+'\nPesanan: '+S+'\nAntar jemput: '+($('aj').checked?'Ya':'Tidak')+'\nCatatan: '+($('ct').value||'-');
+ window.open('https://wa.me/?text='+encodeURIComponent(m),'_blank')};
+show(cur);
+var rv=document.querySelectorAll('.rv');function all(){rv.forEach(function(n){n.classList.add('in')})}
+document.documentElement.classList.add('js');
+if('IntersectionObserver' in window){var io=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{threshold:0,rootMargin:'0px 0px -30px 0px'});rv.forEach(function(n){io.observe(n)});setTimeout(all,2500)}else all();
+</script>
+</body>
+</html>

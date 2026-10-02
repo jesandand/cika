@@ -107,13 +107,29 @@ footer .fr{font-size:24px;color:#fff}
 .js .rv{opacity:0;transform:translateY(22px);transition:.6s}.js .rv.in{opacity:1;transform:none}
 @media(max-width:900px){nav ul{display:none}nav .ib{margin-left:auto}.hg,.two{grid-template-columns:1fr}.pg,.mg{grid-template-columns:1fr}.grid{grid-template-columns:1fr 1fr}.feat{grid-template-columns:1fr 1fr}}
 @media(max-width:520px){.grid{grid-template-columns:1fr}}
+
+.gv{position:relative;margin-top:28px;border-radius:28px;overflow:hidden;box-shadow:0 20px 50px #0006;border:1px solid var(--line);aspect-ratio:4/3;background:var(--surf);touch-action:pan-y}
+.gt{display:flex;height:100%;transition:transform .6s cubic-bezier(.65,0,.35,1)}
+.sl{flex:0 0 100%;position:relative;cursor:zoom-in;overflow:hidden}
+.sl img{width:100%;height:100%;object-fit:cover;display:block}
+.sl .cap{position:absolute;left:0;right:0;bottom:0;padding:46px 22px 18px;background:linear-gradient(transparent,#000b);color:#fff;font:600 19px 'Fredoka'}
+.sl.ph{background:linear-gradient(135deg,#17345a,#0b2250);display:grid;place-items:center;text-align:center;cursor:default}
+.ph-t{display:none;font:600 20px 'Fredoka';color:var(--mut)}.sl.ph .ph-t{display:block}
+.gb{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;border:0;background:#ffffffdd;color:#0b2250;font-size:24px;cursor:pointer;z-index:2}
+.gb.l{left:14px}.gb.r{right:14px}.gb.x{top:calc(18px + env(safe-area-inset-top,0px));right:18px;transform:none}
+.ths{display:flex;gap:10px;justify-content:center;margin-top:16px}
+.tb{width:84px;height:58px;border-radius:14px;border:2px solid transparent;overflow:hidden;padding:0;background:var(--surf);cursor:pointer;opacity:.55;transition:.2s;font-size:20px}
+.tb.on{border-color:var(--brand);opacity:1;transform:translateY(-3px)}.tb img{width:100%;height:100%;object-fit:cover;display:block}
+.lb{position:fixed;inset:0;background:#030a16ee;z-index:50;display:none;align-items:center;justify-content:center;flex-direction:column;padding:20px}.lb.on{display:flex}
+.lb img{max-width:100%;max-height:78vh;border-radius:16px}.lb p{color:#fff;margin-top:12px;font:600 18px 'Fredoka'}
+@media(min-width:900px){.gv{aspect-ratio:16/9}}
 </style>
 </head>
 <body>
 <div class="bub" style="width:46px;height:46px;top:12%;left:4%"></div><div class="bub" style="width:30px;height:30px;top:40%;right:4%;animation-delay:2s"></div><div class="bub" style="width:38px;height:38px;bottom:10%;left:7%;animation-delay:4s"></div>
 <nav><div class="w">
  <a class="brand" href="#top"><span class="hex">Cika</span>Cika Laundry</a>
- <ul><li><a href="#promo">Promo</a></li><li><a href="#harga">Pricelist</a></li><li><a href="#member">Member</a></li><li><a href="#hitung">Pesan</a></li><li><a href="#cabang">Cabang</a></li><li><a href="#faq">FAQ</a></li></ul>
+ <ul><li><a href="#promo">Promo</a></li><li><a href="#harga">Pricelist</a></li><li><a href="#member">Member</a></li><li><a href="#hitung">Pesan</a></li><li><a href="#galeri">Galeri</a></li><li><a href="#cabang">Cabang</a></li><li><a href="#faq">FAQ</a></li></ul>
  </div></nav>
 
 <header class="hero" id="top"><div class="w hg">
@@ -176,6 +192,13 @@ footer .fr{font-size:24px;color:#fff}
  </div>
 </div></section>
 
+<section id="galeri"><div class="w">
+ <span class="eyebrow">Galeri</span><h2>Intip Suasana Cika 📸</h2>
+ <p class="lead">Geser atau ketuk foto untuk lihat lebih dekat, Kak!</p>
+ <div class="gv rv" id="gv"><div class="gt" id="gt"></div><button class="gb l" id="gp" aria-label="Sebelumnya">‹</button><button class="gb r" id="gn" aria-label="Berikutnya">›</button></div>
+ <div class="ths" id="gth"></div>
+</div></section>
+
 <section id="cabang"><div class="w">
  <span class="eyebrow">Lokasi</span><h2>Cabang Terdekat dari Kakak 📍</h2>
  <p class="lead">Mampir ke cabang terdekat ya, Kak! Ketuk untuk buka Google Maps.</p><div class="br" id="br"></div>
@@ -190,9 +213,10 @@ footer .fr{font-size:24px;color:#fff}
  <details><summary>Apakah harga bisa berubah?</summary><p>Harga dapat berubah sewaktu-waktu, silakan konfirmasi ke cabang.</p></details>
 </div></section>
 
+<div class="lb" id="lb"><button class="gb x" id="lx" aria-label="Tutup">✕</button><button class="gb l" id="lp" aria-label="Sebelumnya">‹</button><img id="li" alt=""><p id="lc"></p><button class="gb r" id="ln" aria-label="Berikutnya">›</button></div>
 <footer><div class="w"><p class="fr">Cika Laundry ♥</p><p>Makasih ya, Kak, sudah percayakan laundry ke Cika Laundry 💙</p></div></footer>
 
-<script>
+script>
 var D=[
 {n:'Minggu',c:'#8a5cc7',l:'Selimut & Bedcover',b:'10%',s:'Diskon',e:'🛏️',t:'Selimut & bedcover selalu bersih, hangat dan nyaman!',w:1},
 {n:'Senin',c:'#f5b21b',l:'Diskon',b:'20%',s:'Helm',e:'🪖',t:'Helm jadi lebih bersih & segar!'},
@@ -235,6 +259,28 @@ function calc(){var k=parseFloat($('kg').value)||0,i=$('sv').selectedIndex,h=P[i
 $('kg').oninput=$('sv').onchange=$('pm').onchange=calc;calc();
 $('wa').onclick=function(){var m='Halo Cika Laundry, saya ingin memesan.\nNama: '+($('nm').value||'-')+'\nCabang: '+$('cb').value+'\nPesanan: '+S+'\nAntar jemput: '+($('aj').checked?'Ya':'Tidak')+'\nCatatan: '+($('ct').value||'-');
  window.open('https://wa.me/?text='+encodeURIComponent(m),'_blank')};
+var G=[
+{s:'https://cdn.discordapp.com/attachments/853105860741300284/1555445495290269716/Screenshot_20261002-074433.jpg?backend=b2&ex=6ac08d00&is=6abf3b80&hm=3b0f4f77f9c3e84fa171e13336ae29804f3afbf4196b9173329f6c20d6eedc79&',t:'Cerita Cika #1'},
+{s:'https://cdn.discordapp.com/attachments/853105860741300284/1555445496040919050/IMG-20261002-WA0000.jpg?backend=b2&ex=6ac08d01&is=6abf3b81&hm=ebf911a772100368102c2198ef0f92fee42f87280a821a9d5a6ff91909cce95f&',t:'Cerita Cika #2'},
+{s:'https://cdn.discordapp.com/attachments/853105860741300284/1555445497110593626/IMG-20261001-WA0004.jpg?backend=b2&ex=6ac08d01&is=6abf3b81&hm=1f91434bfa7291f104c07cf6119a66135639468902512754cf9747194dfb92b4&',t:'Cerita Cika #3'}];
+var gi=0,tm,L=G.length,ths=[];
+function go(i){gi=(i+L)%L;$('gt').style.transform='translateX(-'+gi*100+'%)';ths.forEach(function(b,k){b.classList.toggle('on',k===gi)})}
+function auto(){clearInterval(tm);tm=setInterval(function(){go(gi+1)},5000)}
+G.forEach(function(g,i){var sl=document.createElement('div');sl.className='sl';
+ var im=new Image();im.alt=g.t;im.onerror=function(){sl.classList.add('ph');im.remove()};im.src=g.s;sl.appendChild(im);
+ sl.insertAdjacentHTML('beforeend','<span class="ph-t">📸<br>Foto '+(i+1)+'</span><div class="cap">'+g.t+'</div>');
+ sl.onclick=function(){if(!sl.classList.contains('ph'))lb(i)};$('gt').appendChild(sl);
+ var b=document.createElement('button');b.className='tb';b.setAttribute('aria-label','Foto '+(i+1));
+ var ti=new Image();ti.onerror=function(){ti.remove();b.textContent='📷'};ti.src=g.s;b.appendChild(ti);
+ b.onclick=function(){go(i);auto()};$('gth').appendChild(b);ths.push(b)});
+$('gp').onclick=function(){go(gi-1);auto()};$('gn').onclick=function(){go(gi+1);auto()};
+var sx=0,gv=$('gv');gv.onpointerdown=function(e){sx=e.clientX;clearInterval(tm)};
+gv.onpointerup=function(e){var d=e.clientX-sx;if(Math.abs(d)>40)go(gi+(d<0?1:-1));auto()};
+gv.onmouseenter=function(){clearInterval(tm)};gv.onmouseleave=auto;
+function lb(i){gi=(i+L)%L;go(gi);$('li').src=G[gi].s;$('lc').textContent=G[gi].t;$('lb').classList.add('on')}
+$('lx').onclick=function(){$('lb').classList.remove('on')};$('lp').onclick=function(){lb(gi-1)};$('ln').onclick=function(){lb(gi+1)};
+document.onkeydown=function(e){if(!$('lb').classList.contains('on'))return;if(e.key==='Escape')$('lx').onclick();if(e.key==='ArrowLeft')lb(gi-1);if(e.key==='ArrowRight')lb(gi+1)};
+go(0);auto();
 show(cur);
 var rv=document.querySelectorAll('.rv');function all(){rv.forEach(function(n){n.classList.add('in')})}
 document.documentElement.classList.add('js');
